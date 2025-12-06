@@ -1,138 +1,74 @@
-🌐 WiFi-Security-Scanner
-A Modern WiFi Threat Analysis, Security Scoring & Monitoring Tool Built with Python + PyQt5
+# WiFi Security Scanner 🔒
 
-📌 Project Overview
+A simple tool to analyze WiFi network security — scan available WiFi networks, detect insecure configurations, and highlight potential vulnerabilities.
 
-WiFi-Security-Scanner is a professional-grade wireless security auditing tool designed to scan nearby WiFi networks, evaluate their security posture, detect threats, and generate detailed reports.
-It is built with Python, PyQt5, and includes a clean, modern GUI suitable for cybersecurity portfolios, research projects, and real-world demonstrations.
-The application extracts WiFi metadata (SSID, BSSID, encryption, channel, frequency, vendor, etc.), performs security scoring using a custom algorithm, classifies risks, and highlights suspicious networks through a threat-detection engine.# WiFi-Security-Scanner
-A modern WiFi Security Scanner built with Python &amp; PyQt5. Features real-time wireless scanning, encryption analysis, risk scoring, vendor identification, rogue AP detection, auto-scan engine, and export options (PDF, CSV, JSON). Designed for cybersecurity learning and wireless auditing.
+## 🔍 Overview  
+WiFi Security Scanner scans nearby WiFi networks (SSIDs), checks security settings (WEP/WPA/WPA2/WPA3), and helps you identify networks with weak or outdated security. Ideal for network audits, penetration-test practice, or personal security checks.
 
-🚀 Key Features: 
+## ✅ Features  
+- Detect available WiFi networks and list their SSID, signal strength, and security protocol.  
+- Flag networks with weak security protocols (e.g. WEP or open networks).  
+- Easy-to-read reports of network security status.  
+- Cross-platform compatibility (Windows / Linux / macOS) — provided underlying scanning tools are supported.  
+- Simple, minimal codebase — easy to understand, extend, or integrate.  
 
-WiFi Network Scanning,
-Automatic detection of all nearby wireless networks,
-SSID, BSSID, Channel, Frequency (2.4 / 5 GHz),
-Signal strength evaluation,
-Router vendor identification (MAC prefix → manufacturer)
+## 🧰 Requirements  
+- Python 3.x (or language/environment the script uses)  
+- Platform-appropriate dependencies or permissions to scan WiFi networks (may require administrative/root privileges)  
+- (Optionally) additional utilities/libraries if required by OS for wireless scanning  
 
-🛡 Security Scoring Engine: 
+## 🚀 Usage / Installation  
 
-Detects encryption type (WPA3 / WPA2 / WPA / WEP / Open),
-Custom scoring model (0–100)
+```bash
+# Clone the repository
+git clone https://github.com/thesamitamadav/WiFi-Security-Scanner.git
+cd WiFi-Security-Scanner
 
-Evaluates:
-Strength of encryption,
-Signal reliability,
-Default SSIDs (JioFiber, TP-Link, Netgear, etc.),
-SSID complexity
+# Run the scanner script
+python wifi_scanner.py   # or appropriate command depending on the main file name
+```
+⚠️ On many OSes, scanning WiFi network info requires elevated permissions. Run accordingly (e.g. sudo python wifi_scanner.py on Linux / macOS).
 
-⚠ Threat Detection Engine:
+## 🧩 How it Works
 
-Automatically identifies:
-Open networks,
-WEP or weakly protected networks,
-Duplicate SSIDs (possible evil-twin attacks),
-Default router names,
-Suspicious low-signal but secure networks,
-Inconsistent BSSID patterns
+The script scans available WiFi networks using system wireless interfaces / native WiFi scanning tools.
 
-Displays:
+Parses security protocol reported by the WiFi driver.
 
-Threat summary,
-Color-coded risk classification,
-Real-time alerts
+Determines risk level:
 
-🖥 Modern PyQt5 Interface: 
+Open / WEP → Insecure
 
-Dark mode UI,
-Smart color-coded rows based on security level,
-Smooth table rendering,
-Status bar notifications,
-Auto-scan mode (re-scans every 5 seconds),
-Tabs for Security View and Raw Logs
+WPA / WPA2 → Acceptable (depending on signal strength & passphrase)
 
-📄 Export Options: 
+WPA3 → Secure (if supported)
 
-Export results as JSON,
-Export structured CSV,
-Generate professional PDF security reports
+Displays summary list / report with SSID, security, signal and risk status.
 
-🧰 Windows Executable Ready:
+## 📚 Disclaimer & Ethical Use
 
-Builds into a standalone .exe using PyInstaller.
+This tool is intended only for auditing networks you own or have explicit permission to test.
+Use on public / unknown / third-party networks without permission may be illegal or unethical.
+You use it at your own risk. The author is not responsible for misuse.
 
-🧩 Requirements
+## 📝 Contributing
 
-Python:	3.9+ recommended,
-OS:	Windows 10/11 (full support) / Linux (limited),
-Dependencies:	PyQt5, ReportLab
+Feel free to open issues or submit pull requests.
+Possible contributions:
 
-▶ How to Run the Application
+Support for more operating systems / wireless drivers
 
-python wifi_gui.py
+Enhanced reporting (CSV/JSON output)
 
-🛠 Build a Standalone Windows EXE
+GUI / CLI improvements
 
-Run:
-pyinstaller --onefile --windowed --icon=icon.ico wifi_gui.py
+Additional security checks (e.g. password strength, MAC filtering analysis)
 
-Executable output will be located in:
-/dist/WiFiScanner.exe
+## 👤 Author
 
-🔍 Threat Engine – How It Works
+Samita Madav — Cybersecurity & IT Specialist
 
-The Threat Detection Engine uses real-world wireless security rules:
+## 📄 License 
 
-🔹 Open Network (Very High Risk)
+This project is licensed under the MIT License — you are free to use, modify, and distribute it, provided proper credit is given.
 
-No encryption
-
-Vulnerable to sniffing & MITM
-
-🔹 Weak Encryption (WEP)
-
-Easily crackable
-
-Automatically marked CRITICAL
-
-🔹 Default Router SSIDs
-
-Example: TP-LINK_1234, JioFiber, NETGEARxx
-
-Often indicates unchanged factory configurations
-
-Penalty added in scoring
-
-🔹 Duplicate SSIDs (Evil Twin)
-
-If two networks share:
-
-Same SSID
-
-Different BSSID
-
-Different signal patterns
-
-→ The engine flags it as possible rogue AP.
-
-🔹 Suspicious Low-Signal but Secure Networks
-
-Secure but very weak networks can suggest:
-
-Remote spoofed AP
-
-Extended-range attacks
-
-📄 License
-
-This project is licensed under the MIT License.
-
-You are free to use, modify, and distribute it as long as attribution is given.
-
-MIT License © 2025 Samita Madav
-
-👩‍💻 Author / Contact
-
-Samita Madav,
-Cybersecurity & Ethical Hacking Enthusiast
